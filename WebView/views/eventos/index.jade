@@ -1,0 +1,28 @@
+extends ../layout
+
+block content 
+      h2 Eventos
+      br
+      table(class="table well")
+        thead 
+          tr
+            th Titulo:
+            th Subtitulo:
+            th Descricao:
+            th Data do Evento:
+            th Opções
+        tbody
+          each valor, i in lista
+            tr
+              td #{valor.titulo}
+              td #{valor.subtitulo}
+              td #{valor.descricao}
+              td #{valor.dataEvento}
+              td
+                a(href="/eventos/edit/#{valor._id}", title="Editar", class="btn btn-info") Modificar
+                &nbsp
+                a(href="/eventos/show/#{valor._id}", title="Visualizar", class="btn btn-primary") Visualizar
+      div(class="pull-right")
+        a(href="/" title="Home", class="btn btn-info") Voltar
+        &nbsp
+        a(href="/eventos/create" title="Cadastrar", class="btn inline btn-success") Cadastrar

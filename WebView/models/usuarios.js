@@ -3,9 +3,9 @@ module.exports = function(){
 	var Schema   = mongoose.Schema;
 
 	var usuarios  = new Schema({
-		nome: String,
-		login: String,
-		senha: String,
+		nome	: String,
+		login   : String,
+		senha   : String,
 		data_cad: {type: Date, default: Date.now}
 	});
 

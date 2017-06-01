@@ -37,7 +37,10 @@ module.exports = (app) => {
 					console.log(err);
 				} else{
 					var model   = data;
-					model 	    = req.body;
+					model.titulo     = req.body.titulo;
+					model.subtitulo  = req.body.subtitulo;
+					model.dataEvento = req.body.dataEvento;
+					model.descricao  = req.body.descricao;
 					model.save( (err) => {
 					    err ? console.log(err) : res.redirect('/eventos');
 					});
