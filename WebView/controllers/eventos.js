@@ -10,6 +10,12 @@ module.exports = (app) => {
 			});
 		},
 
+		evento: (req,res) => {
+			Evento.find((err,data) => {
+				err ? console.log(err) : res.json(data);
+			});
+		},
+
 		create: (req,res) => {
 			res.render("eventos/create");
 		},

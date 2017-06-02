@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 
 var app = express();
 /*Mongo DB*/
-mongoose.connect('mongodb://localhost/eventos',function(err){
+mongoose.connect('mongodb://userevent:event123@ds157971.mlab.com:57971/eventos',function(err){
   if(err){
     console.log('Erro ao conectar no mongodb '+err)
   }
