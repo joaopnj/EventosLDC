@@ -10,12 +10,6 @@ module.exports = (app) => {
 			});
 		},
 
-		evento: (req,res) => {
-			Evento.find((err,data) => {
-				err ? console.log(err) : res.json(data);
-			});
-		},
-
 		create: (req,res) => {
 			res.render("eventos/create");
 		},
@@ -57,6 +51,12 @@ module.exports = (app) => {
 		show: (req,res) => {
 			Evento.findById(req.params.id, (err, data) => {
 				err ? console.log(err) : res.render('eventos/show', {value: data});
+			});
+		},
+
+		share: (req,res) => {
+			Evento.find((err,data) => {
+				err ? console.log(err) : res.json(data);
 			});
 		}
     }

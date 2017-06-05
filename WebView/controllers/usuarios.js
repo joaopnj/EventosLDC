@@ -6,39 +6,27 @@ module.exports = function(app){
 	var UsuarioController = {
 		index: function(req,res){
 			Usuario.find(function(err,data){
-				if(err){
-					console.log(err);
-				}
-				res.render("usuarios/index", {lista: JSON.stringify(data)});
+				err ? console.log(err) : res.render("usuarios/index", {lista: JSON.stringify(data)});
 			});
 		},
 		create: function(req,res){
 			res.render("usuarios/create");
 		},
 
-		insert: function(req,res){
+		insert: (req,res) => {
 			var model = new Usuario(req.body);
-			model.save(function(err){
-				if(err){
-					console.log(err);
-				}
-				else{
-					res.redirect('/usuarios');
-				}
+			model.save((err) =>{
+				err ? console.log(err) : res.redirect('/usuarios');
 			});
 		},
 
-		edit: function(req,res){
-			Usuario.findById(req.params.id, function(err, data){
-				if(err){
-					console.log(err);
-				} else{
-					res.render('usuarios/edit', {value: data});
-				}
+		edit: (req,res) => {
+			Usuario.findById(req.params.id, (err, data) => {
+				err ? console.log(err) : res.render('usuarios/edit', {value: data});
 			});
 		},
 
-		update: function(req,res){
+		update: (req,res) => {
 			Usuario.findById(req.params.id, function(err, data){
 				if(err){
 					console.log(err);
@@ -46,27 +34,18 @@ module.exports = function(app){
 					var model   = data;
 					model.nome  = req.body.nome;
 					model.login = req.body.login;
-					model.save(function(err){
-						if(err){
-							console.log(err);
-						}
-						else{
-							res.redirect('/usuarios');
-						}
+					model.save( (err) => {
+						err ? console.log(err) : res.redirect('/usuarios');
 					});
 				}
 			});
 		},
-		show: function(req,res){
+		show: (req,res) => {
 			Usuario.findById(req.params.id, function(err, data){
-				if(err){
-					console.log(err);
-				} else{
-					res.render('usuarios/show', {value: data});
-				}
+				err ? console.log(err) : res.render('usuarios/show', {value: data});
 			});
 		},
-		notification: function(req,res){
+		notification: (req,res) => {
 			notifier.notify({
         	'title'  : "Só testando pra ver",
         	'message': "Olá, minha primeira notificação",
@@ -77,6 +56,12 @@ module.exports = function(app){
     		// Response is response from notification 
     		});
 			res.redirect('/usuarios');
+		},
+
+		share: (req,res) => {
+			Usuario.find((err,data) => {
+				err ? console.log(err) : res.json(data);
+			});
 		}
 	}
 

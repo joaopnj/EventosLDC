@@ -7,7 +7,7 @@ module.exports = (app) => {
 	app.get ("/eventos/create",   eventos.create);
 	app.post("/eventos",          eventos.insert);
 	app.get ("/eventos/edit/:id", eventos.edit);
-	app.get ("/indexEvento", eventos.evento);
+	app.get ("/shareEvent"		, eventos.share);
 	app.post("/eventos/edit/:id", eventos.update);
 	app.get ("/eventos/show/:id", eventos.show);
     

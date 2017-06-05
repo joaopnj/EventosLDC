@@ -6,6 +6,7 @@ block content
       table(class="table well")
         thead 
           tr
+            th Id:
             th Titulo:
             th Subtitulo:
             th Descricao:
@@ -14,10 +15,11 @@ block content
         tbody
           each valor, i in lista
             tr
+              td #{valor._id}
               td #{valor.titulo}
               td #{valor.subtitulo}
               td #{valor.descricao}
-              td #{valor. }
+              td #{valor.dataEvento}
               td
                 a(href="/eventos/edit/#{valor._id}", title="Editar", class="btn btn-info") Modificar
                 &nbsp
